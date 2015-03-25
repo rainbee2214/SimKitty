@@ -8,20 +8,27 @@ public class ControlBackground : MonoBehaviour
 {
     Skybox skybox;
     Material[] skies;
-    int currentSky = 0;
-
+    public int currentSky = 0;
+    
     public float speed = 1f;
     public Text text;
 
     float nextTickTime;
     float delay = 1f;
 
+    bool autoRotate;
     bool rotateLeft;
     bool rotateRight;
     float manualSpeed = 20f;
     public float lookSpeed = 10f;
 
     void Start()
+    {
+        LoadSkies();
+        nextTickTime = Time.time;
+    }
+
+    void LoadSkies()
     {
         skybox = Camera.main.GetComponent<Skybox>();
         skies = new Material[5];
@@ -30,7 +37,6 @@ public class ControlBackground : MonoBehaviour
         skies[2] = Resources.Load("Skyboxes/Skies/LateAfternoon", typeof(Material)) as Material;
         skies[3] = Resources.Load("Skyboxes/Skies/Evening", typeof(Material)) as Material;
         skies[4] = Resources.Load("Skyboxes/Skies/Night", typeof(Material)) as Material;
-        nextTickTime = Time.time;
     }
 
     void Update()
@@ -48,7 +54,7 @@ public class ControlBackground : MonoBehaviour
 
     void SetSky(string hour, string timeOfDay)
     {
-        Debug.Log(timeOfDay);
+        //Debug.Log(timeOfDay);
         switch (Int32.Parse(hour))
         {
             case 1:
@@ -124,7 +130,7 @@ public class ControlBackground : MonoBehaviour
                     break;
                 }
         }
-        Debug.Log("Current sky: " + currentSky);
+        //Debug.Log("Current sky: " + currentSky);
         skybox.material = skies[currentSky];
 
     }
@@ -140,12 +146,12 @@ public class ControlBackground : MonoBehaviour
     void Rotate()
     {
         LookAround(0f);
-        if (Input.GetButton("RotateLeft"))
+        if (Input.GetButton("RotateLeft") || (autoRotate && rotateLeft))
         {
             rotateRight = false;
             rotateLeft = true;
         }
-        else if (Input.GetButton("RotateRight"))
+        else if (Input.GetButton("RotateRight") || (autoRotate && rotateRight))
         {
             rotateRight = true;
             rotateLeft = false;
@@ -165,6 +171,24 @@ public class ControlBackground : MonoBehaviour
         }
     }
 
+    public void AutoRotate()
+    {
+        autoRotate = !autoRotate;
+    }
+
+    public void RotateLeft()
+    {
+        rotateRight = false;
+        rotateLeft = true;
+        AutoRotate();
+    }
+
+    public void RotateRight()
+    {
+        rotateRight = true;
+        rotateLeft = false;
+        AutoRotate();
+    }
     //Returns an array of date data: month/day/year, day/month/year, day, month, year, now
     string[] GetRealTime()
     {

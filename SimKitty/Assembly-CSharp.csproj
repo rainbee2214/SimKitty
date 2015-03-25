@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\ControlBackground.cs" />
      <Compile Include="Assets\Scripts\Kitten.cs" />
      <Compile Include="Assets\Scripts\KittenController.cs" />
+     <Compile Include="Assets\Scripts\KittyCam.cs" />
      <Compile Include="Assets\Scripts\TargetKitten.cs" />
      <None Include="Assets\Resources\Skyboxes\Skies\README.txt" />
  <Reference Include="UnityEngine.UI">

@@ -16,7 +16,7 @@ public class Colourize : MonoBehaviour
     void Start()
     {
         text = GetComponent<Text>();
-        if (colors == null)
+        if (colors.Length <= 0)
         {
             colors = new Color[10];
             colors[0] = Color.black;
@@ -31,6 +31,9 @@ public class Colourize : MonoBehaviour
             colors[9] = Color.white;
         }
         nextChangeTime = Time.time;
+
+        currentColor = Random.Range(0, colors.Length);
+        text.color = colors[currentColor];
     }
 
     // Update is called once per frame

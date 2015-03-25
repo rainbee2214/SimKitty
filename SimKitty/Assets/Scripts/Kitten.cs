@@ -72,7 +72,7 @@ public class Kitten : MonoBehaviour
             if (currPosition.z > FLOOR_MAX) currPosition.y = FLOOR_MAX;
             else if (currPosition.z < -FLOOR_MAX) currPosition.y = -FLOOR_MAX;
 
-            currPosition.y = 0f;
+            //currPosition.y = 0f;
             transform.position = Vector3.Lerp(transform.position,newPosition, Time.deltaTime*walkSpeed);
         }
     }
