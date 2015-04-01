@@ -40,7 +40,6 @@ public class Kitten : MonoBehaviour
     float halfMinDelay = 30f;
     float quickDelay = 5f;
 
-
     float nextActionTime;
     float nextUpdateTime;
     float nextWalktime;
@@ -64,6 +63,7 @@ public class Kitten : MonoBehaviour
         //If it's not doing anything, walk around
         if (currentStatus == Status.DoingNothing)
         {
+            //Or a random amount of the time, just stay doing nothing
             if (Time.time > nextWalktime) WalkAround();
             Vector3 currPosition = transform.position;
             if (currPosition.x > FLOOR_MAX) currPosition.x = FLOOR_MAX;

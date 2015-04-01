@@ -1,0 +1,42 @@
+Kitten Notes:
+
+Possible kitten actions:
+-nothing
+-sitting
+-walking
+-laying
+-eating
+-sleeping
+-playing
+
+
+Kitten temporary stats:
+-hungryness
+-sleepyness
+-playfulness
+
+Kitten Permanent Stats [Out of 200 -- Change to % in game]
+-cuteness
+-cuddlyness
+-funness
+-angryness
+-cleverness
+-lazyness
+-fatness
+
+
+Kitten Flow:
+
+if the kitten is doing an activity (n% chance it will continue to do that)
+[Based on stats - an action could break the activity]
+if (hungry) eat
+if (playful) play
+if (sleepy) sleep
+**but for each of this, there is a chance that the kitten will just do something else instead
+**when doing an action such as this, the temp stat involved will go down (mostly)
+
+if (still not doing anything)
+decide on an activity or continue to do nothing
+**Choosing the activity will depend on the perm stats of the kitten
+
+If an action is chosen
