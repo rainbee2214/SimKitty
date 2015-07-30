@@ -40,3 +40,10 @@ decide on an activity or continue to do nothing
 **Choosing the activity will depend on the perm stats of the kitten
 
 If an action is chosen
+
+
+Food Supply: Each time a kitten eats food, your supply goes down by 1
+-If you run out of food, every time a kitten tries to eat, it stays hungry, loses happiness and then does nothing instead
+
+Toy supply: Each time a kitten is playing with a toy, it becomes unavailable for other kittens to play with
+-If a kitten tries to play and there are no toys, it will lose some happiness and do nothing instead.
